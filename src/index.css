@@ -2,104 +2,115 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* GrowFast Design System - Dark Premium Theme
+   All colors MUST be HSL tokens. Do not hardcode colors in components. */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Base surfaces */
+    --background: 222 60% 6%;        /* deep slate */
+    --foreground: 210 40% 96%;       /* near white */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 222 52% 8%;              /* slightly lifted surface */
+    --card-foreground: 210 40% 96%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 222 52% 8%;
+    --popover-foreground: 210 40% 96%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Brand */
+    --primary: 260 90% 60%;          /* electric violet */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217 32% 18%;        /* muted panel */
+    --secondary-foreground: 210 40% 96%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 217 26% 16%;
+    --muted-foreground: 215 20% 72%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 190 95% 45%;           /* cyan accent */
     --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 70% 50%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --border: 217 24% 22%;
+    --input: 217 24% 22%;
+    --ring: 260 90% 60%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar */
+    --sidebar-background: 222 55% 7%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 260 90% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 217 24% 16%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 217 24% 22%;
+    --sidebar-ring: 260 90% 60%;
+
+    /* Premium Effects */
+    --brand: var(--primary);
+    --brand-alt: 280 85% 64%;
+    --glow: 260 90% 60% / 0.45;
+    --glow-strong: 260 90% 60% / 0.7;
+    --glass-bg: 222 52% 10% / 0.5;   /* for frosted panels */
+    --glass-border: 220 30% 85% / 0.12;
+    --glass-highlight: 0 0% 100% / 0.06;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    --gradient-surface: linear-gradient(180deg, hsl(222 60% 7%) 0%, hsl(222 60% 5%) 100%);
+    --gradient-hero-overlay: radial-gradient(1200px 600px at 50% 20%, hsl(var(--primary) / 0.25), transparent 60%), linear-gradient(180deg, hsl(222 60% 5% / 0.5), hsl(222 60% 5% / 0.9));
+
+    /* Shadows */
+    --shadow-elevated: 0 20px 40px -20px hsl(220 80% 2% / 0.8), inset 0 1px 0 hsl(var(--glass-highlight));
+    --shadow-glow: 0 0 0 1px hsl(var(--primary) / 0.35), 0 6px 24px hsl(var(--glow));
+    --shadow-glow-strong: 0 0 0 1px hsl(var(--primary) / 0.6), 0 8px 30px hsl(var(--glow-strong));
   }
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground antialiased; }
+}
 
-  body {
-    @apply bg-background text-foreground;
+/* Utilities and semantic helpers */
+@layer utilities {
+  .bg-gradient-primary { background-image: var(--gradient-primary); }
+  .bg-gradient-surface { background-image: var(--gradient-surface); }
+  .bg-hero-overlay { background-image: var(--gradient-hero-overlay); }
+  .shadow-elevated { box-shadow: var(--shadow-elevated); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-glow-strong { box-shadow: var(--shadow-glow-strong); }
+  .glass {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-elevated);
+    border: 1px solid hsl(var(--glass-border));
   }
+  .glass-soft { background: hsl(222 52% 10% / 0.35); border: 1px solid hsl(var(--glass-border)); backdrop-filter: blur(8px); }
+  .glow-ring { box-shadow: 0 0 0 2px hsl(var(--ring) / 0.35), 0 0 24px hsl(var(--ring) / 0.35); }
+
+  /* Signature ripple for glass buttons */
+  .ripple-hover { position: relative; overflow: hidden; }
+  .ripple-hover::after {
+    content: ""; position: absolute; inset: 0; border-radius: inherit;
+    background: radial-gradient(circle at var(--x,50%) var(--y,50%), hsl(var(--primary) / 0.25), transparent 40%);
+    opacity: 0; transition: opacity 300ms ease;
+  }
+  .ripple-hover:hover::after { opacity: 1; }
+}
+
+/* Typography scale */
+@layer components {
+  .h1 { @apply text-4xl md:text-6xl font-semibold tracking-tight; }
+  .h2 { @apply text-3xl md:text-4xl font-semibold tracking-tight; }
+  .h3 { @apply text-2xl font-semibold; }
+  .subtle { @apply text-sm text-muted-foreground; }
+
+  /* Button premium variants via utilities */
+  .btn-hero { @apply bg-gradient-primary text-primary-foreground shadow-glow hover:shadow-glow-strong transition-shadow; }
+  .btn-premium { @apply glass text-foreground hover:shadow-glow transition-shadow; }
 }
